@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CharacterConfig
   m_EditorClassIdentifier: 
   _runningStateConfig:
-    <Speed>k__BackingField: 1.12
+    <Speed>k__BackingField: 5
   _airborneStateConfig:
     _jumpingStateConfig:
       _maxHeight: 4
@@ -21,3 +21,5 @@ MonoBehaviour:
     _speed: 5.25
   _sprintStateConfig:
     <SprintSpeed>k__BackingField: 15
+  _walkingStateConfig:
+    <WalkSpeed>k__BackingField: 2

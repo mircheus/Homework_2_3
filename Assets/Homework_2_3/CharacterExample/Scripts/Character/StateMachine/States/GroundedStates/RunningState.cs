@@ -36,16 +36,18 @@ public class RunningState : GroundedState
         base.AddInputActionsCallbacks();
         
         Input.Movement.Sprint.started += OnSprintKeyPressed;
+        Input.Movement.Walk.started += OnWalkKeyPressed;
     }
-
     
-
     protected override void RemoveInputActionsCallbacks()
     {
         base.RemoveInputActionsCallbacks();
         
         Input.Movement.Sprint.started -= OnSprintKeyPressed;
+        Input.Movement.Walk.started -= OnWalkKeyPressed;
     }
-    
+
+
     private void OnSprintKeyPressed(InputAction.CallbackContext obj) => StateSwitcher.SwitchState<SprintState>();
+    private void OnWalkKeyPressed(InputAction.CallbackContext obj) => StateSwitcher.SwitchState<WalkingState>();
 }
