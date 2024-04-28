@@ -1,3 +1,5 @@
+using UnityEngine.InputSystem;
+
 public class RunningState : GroundedState
 {
     private readonly RunningStateConfig _config;
@@ -28,4 +30,22 @@ public class RunningState : GroundedState
         if (IsHorizontalInputZero())
             StateSwitcher.SwitchState<IdlingState>();
     }
+
+    protected override void AddInputActionsCallbacks()
+    {
+        base.AddInputActionsCallbacks();
+        
+        Input.Movement.Sprint.started += OnSprintKeyPressed;
+    }
+
+    
+
+    protected override void RemoveInputActionsCallbacks()
+    {
+        base.RemoveInputActionsCallbacks();
+        
+        Input.Movement.Sprint.started -= OnSprintKeyPressed;
+    }
+    
+    private void OnSprintKeyPressed(InputAction.CallbackContext obj) => StateSwitcher.SwitchState<SprintState>();
 }
